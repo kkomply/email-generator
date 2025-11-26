@@ -1,0 +1,32 @@
+.form-renderer {
+  padding: 1rem 0;
+}
+
+.form-renderer form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-renderer fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.form-renderer label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.form-renderer input,
+.form-renderer textarea,
+.form-renderer select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}

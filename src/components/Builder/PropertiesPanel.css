@@ -1,0 +1,60 @@
+.properties-panel h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.property-section {
+  margin-bottom: 1rem;
+}
+
+.property-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #333;
+}
+
+.property-value {
+  font-size: 0.875rem;
+  color: #666;
+  text-transform: capitalize;
+}
+
+.property-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.property-input:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.property-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.property-checkbox input[type="checkbox"] {
+  width: auto;
+}
+
+.dynamic-section {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.dynamic-fields {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}

@@ -1,0 +1,40 @@
+.block-list h3 {
+  margin-top: 0;
+}
+
+.block-list-description {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.block-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.block-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.block-item:hover {
+  background-color: #e9ecef;
+  border-color: #007bff;
+}
+
+.block-icon {
+  font-size: 1.25rem;
+}
+
+.block-label {
+  font-size: 0.875rem;
+}
