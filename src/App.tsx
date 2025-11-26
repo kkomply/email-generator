@@ -5,7 +5,7 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/email-generator">
       <Routes>
         <Route path="/" element={<Navigate to="/builder" replace />} />
         <Route path="/builder" element={<BuilderPage />} />

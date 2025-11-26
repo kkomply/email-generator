@@ -17,7 +17,7 @@ function FormRenderer({ schema, formData, onChange }: FormRendererProps) {
   return (
     <div className="form-renderer">
       <Form
-        schema={schema}
+        schema={schema as any}
         formData={formData}
         validator={validator}
         onChange={handleChange}
