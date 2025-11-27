@@ -1,16 +1,66 @@
 :root {
+  /* Font Settings */
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Primary Colors */
+  --color-primary: #3B82F6;
+  --color-primary-hover: #2563EB;
+  --color-primary-light: #DBEAFE;
+
+  /* Neutral Grays - IMPROVED CONTRAST */
+  --color-bg-app: #E5E7EB;
+  --color-bg-panel: #FFFFFF;
+  --color-bg-hover: #F9FAFB;
+  --color-bg-input: #F3F4F6;
+  --color-bg-selected: #EFF6FF;
+
+  /* Sidebar Backgrounds - VISUAL DISTINCTION */
+  --color-bg-sidebar-left: #FAFBFC;    /* Very light gray for left sidebar */
+  --color-bg-sidebar-right: #F8FAFC;   /* Very light blue-gray for right sidebar */
+
+  /* Borders - STRONGER */
+  --color-border: #D1D5DB;
+  --color-border-light: #E5E7EB;
+  --color-border-focus: #3B82F6;
+
+  /* Text - BETTER CONTRAST */
+  --color-text-primary: #111827;
+  --color-text-secondary: #4B5563;
+  --color-text-tertiary: #6B7280;
+  --color-text-placeholder: #9CA3AF;
+
+  /* Feedback */
+  --color-success: #10B981;
+  --color-error: #EF4444;
+  --color-warning: #F59E0B;
+
+  /* Accent Colors - Warm */
+  --color-accent: #F59E0B;           /* Warm amber for highlights */
+  --color-accent-hover: #D97706;     /* Darker amber for hover */
+  --color-accent-light: #FEF3C7;     /* Light amber background */
+
+  /* Shadows - MORE PROMINENT */
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
 }
 
 a {
@@ -54,15 +104,8 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Global focus indicator for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
 }

@@ -12,6 +12,8 @@ function BlockList({ onAddBlock }: BlockListProps) {
     { type: 'button', label: 'Кнопка', icon: '🔘' },
     { type: 'divider', label: 'Разделитель', icon: '➖' },
     { type: 'spacer', label: 'Отступ', icon: '⬜' },
+    { type: 'heading', label: 'Заголовок', icon: '📰' },
+    { type: 'list', label: 'Список', icon: '📋' },
   ];
 
   return (

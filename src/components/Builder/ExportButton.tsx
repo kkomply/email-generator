@@ -70,6 +70,32 @@ function ExportButton({ blocks }: ExportButtonProps) {
         case 'spacer':
           html += `    <div style="height: 30px;"></div>\n`;
           break;
+
+        case 'heading': {
+          const level = block.styles?.level || 'h2';
+          const content = block.isDynamic && block.dynamicField?.variableName
+            ? `{{${block.dynamicField.variableName}}}`
+            : block.content;
+
+          html += `    <${level} style="font-size: ${block.styles?.fontSize || '24px'}; color: ${block.styles?.color || '#111827'}; text-align: ${block.styles?.textAlign || 'left'}; padding: ${block.styles?.padding || '10px'}; font-weight: ${block.styles?.fontWeight || '700'}; margin: 0;">${content}</${level}>\n`;
+          break;
+        }
+
+        case 'list': {
+          const listTag = block.styles?.listType || 'ul';
+          const listStyle = block.styles?.listStyle || 'disc';
+          const items = block.listItems || [];
+
+          const itemsHtml = items.map((item, index) => {
+            const content = block.isDynamic && block.dynamicField?.variableName
+              ? `{{${block.dynamicField.variableName}_item_${index + 1}}}`
+              : item;
+            return `<li>${content}</li>`;
+          }).join('');
+
+          html += `    <${listTag} style="font-size: ${block.styles?.fontSize || '16px'}; color: ${block.styles?.color || '#333333'}; padding: ${block.styles?.padding || '10px'}; list-style-type: ${listStyle}; margin: 0; padding-left: 20px;">${itemsHtml}</${listTag}>\n`;
+          break;
+        }
       }
     });
 

@@ -3,6 +3,8 @@
   margin-bottom: 1rem;
   color: #111827;
   font-weight: 700;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--color-border-light);
 }
 
 .block-list-description {
@@ -22,16 +24,21 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem;
-  background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
-  border-radius: 4px;
+  background-color: var(--color-bg-hover);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .block-item:hover {
-  background-color: #e9ecef;
-  border-color: #007bff;
+  background-color: var(--color-bg-input);
+  border-color: var(--color-primary);
+}
+
+.block-item:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
 }
 
 .block-icon {

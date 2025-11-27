@@ -18,6 +18,7 @@ function BuilderPage() {
       id: `block-${Date.now()}`,
       type,
       content: getDefaultContent(type),
+      listItems: type === 'list' ? ['Пункт списка 1', 'Пункт списка 2', 'Пункт списка 3'] : undefined,
       isDynamic: false,
       styles: getDefaultStyles(type),
     };
@@ -49,6 +50,10 @@ function BuilderPage() {
         return '';
       case 'spacer':
         return '';
+      case 'heading':
+        return 'Заголовок раздела';
+      case 'list':
+        return '';
       default:
         return '';
     }
@@ -60,6 +65,10 @@ function BuilderPage() {
         return { fontSize: '16px', color: '#000000', textAlign: 'left' as const, padding: '10px' };
       case 'button':
         return { fontSize: '16px', color: '#ffffff', backgroundColor: '#007bff', padding: '10px 20px' };
+      case 'heading':
+        return { fontSize: '24px', color: '#111827', textAlign: 'left' as const, padding: '10px', fontWeight: '700', level: 'h2' as const };
+      case 'list':
+        return { fontSize: '16px', color: '#333333', padding: '10px', listType: 'ul' as const, listStyle: 'disc' as const };
       default:
         return {};
     }

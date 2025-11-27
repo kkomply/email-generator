@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import type { Block } from '../../types';
 import './Canvas.css';
 
@@ -10,6 +11,30 @@ interface CanvasProps {
 }
 
 function Canvas({ blocks, selectedBlockId, onSelectBlock, onDeleteBlock }: CanvasProps) {
+  const [newlyAddedBlockIds, setNewlyAddedBlockIds] = useState<Set<string>>(new Set());
+  const [previousBlockCount, setPreviousBlockCount] = useState(blocks.length);
+
+  // Detect when a new block is added
+  useEffect(() => {
+    if (blocks.length > previousBlockCount) {
+      // Find the newly added block (the last one)
+      const newBlock = blocks[blocks.length - 1];
+      if (newBlock) {
+        // Add to newly added set
+        setNewlyAddedBlockIds(prev => new Set(prev).add(newBlock.id));
+
+        // Remove from set after animation completes
+        setTimeout(() => {
+          setNewlyAddedBlockIds(prev => {
+            const next = new Set(prev);
+            next.delete(newBlock.id);
+            return next;
+          });
+        }, 500);
+      }
+    }
+    setPreviousBlockCount(blocks.length);
+  }, [blocks, previousBlockCount]);
   const renderBlock = (block: Block) => {
     switch (block.type) {
       case 'text':
@@ -76,6 +101,59 @@ function Canvas({ blocks, selectedBlockId, onSelectBlock, onDeleteBlock }: Canva
       case 'spacer':
         return <div style={{ height: '30px' }} />;
 
+      case 'heading':
+        const HeadingTag = block.styles?.level || 'h2';
+        return (
+          <HeadingTag
+            style={{
+              fontSize: block.styles?.fontSize,
+              color: block.styles?.color,
+              textAlign: block.styles?.textAlign,
+              padding: block.styles?.padding,
+              fontWeight: block.styles?.fontWeight,
+              margin: 0,
+            }}
+          >
+            {block.isDynamic ? (
+              <span className="dynamic-placeholder">
+                {`{{${block.dynamicField?.variableName}}}`}
+              </span>
+            ) : (
+              block.content
+            )}
+          </HeadingTag>
+        );
+
+      case 'list': {
+        const ListTag = block.styles?.listType === 'ol' ? 'ol' : 'ul';
+        const items = block.listItems || [];
+
+        return (
+          <ListTag
+            style={{
+              fontSize: block.styles?.fontSize,
+              color: block.styles?.color,
+              padding: block.styles?.padding,
+              listStyleType: block.styles?.listStyle || 'disc',
+              margin: 0,
+              paddingLeft: '20px',
+            }}
+          >
+            {items.map((item, index) => (
+              <li key={index}>
+                {block.isDynamic ? (
+                  <span className="dynamic-placeholder">
+                    {`{{${block.dynamicField?.variableName}_item_${index + 1}}}`}
+                  </span>
+                ) : (
+                  item
+                )}
+              </li>
+            ))}
+          </ListTag>
+        );
+      }
+
       default:
         return null;
     }
@@ -95,7 +173,7 @@ function Canvas({ blocks, selectedBlockId, onSelectBlock, onDeleteBlock }: Canva
               key={block.id}
               className={`canvas-block ${selectedBlockId === block.id ? 'selected' : ''} ${
                 block.isDynamic ? 'dynamic' : ''
-              }`}
+              } ${newlyAddedBlockIds.has(block.id) ? 'newly-added' : ''}`}
               onClick={() => onSelectBlock(block.id)}
             >
               {renderBlock(block)}

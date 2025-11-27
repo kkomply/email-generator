@@ -1,5 +1,5 @@
 // Block types
-export type BlockType = 'text' | 'image' | 'button' | 'divider' | 'spacer';
+export type BlockType = 'text' | 'image' | 'button' | 'divider' | 'spacer' | 'heading' | 'list';
 
 // Field types for dynamic fields
 export type FieldType = 'text' | 'number' | 'email' | 'select' | 'checkbox' | 'textarea';
@@ -19,6 +19,7 @@ export interface Block {
   id: string;
   type: BlockType;
   content: string;
+  listItems?: string[];
   isDynamic: boolean;
   dynamicField?: DynamicField;
   styles?: {
@@ -27,6 +28,10 @@ export interface Block {
     textAlign?: 'left' | 'center' | 'right';
     padding?: string;
     backgroundColor?: string;
+    fontWeight?: string;
+    level?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+    listType?: 'ul' | 'ol';
+    listStyle?: 'disc' | 'circle' | 'square' | 'decimal' | 'lower-alpha' | 'upper-alpha' | 'lower-roman' | 'upper-roman';
   };
 }
 
