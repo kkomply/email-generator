@@ -18,15 +18,29 @@
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .form-renderer input,
 .form-renderer textarea,
 .form-renderer select {
   width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 8px 12px;
+  border: 1px solid #D1D5DB;
+  border-radius: 6px;
   font-size: 0.875rem;
+  background-color: #F9FAFB;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-renderer input:focus,
+.form-renderer textarea:focus,
+.form-renderer select:focus {
+  outline: none;
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  background-color: #FFFFFF;
 }

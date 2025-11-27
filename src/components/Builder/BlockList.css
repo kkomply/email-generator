@@ -1,5 +1,8 @@
 .block-list h3 {
   margin-top: 0;
+  margin-bottom: 1rem;
+  color: #111827;
+  font-weight: 700;
 }
 
 .block-list-description {
