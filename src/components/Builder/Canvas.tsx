@@ -113,7 +113,7 @@ function Canvas({ blocks, selectedBlockId, onSelectBlock, onDeleteBlock }: Canva
         // Process HTML content with inline variables styling
         const processHtmlWithVariables = (html: string) => {
           // Replace {{variable}} patterns with styled spans for display
-          return html.replace(/\{\{([^}]+)\}\}/g, (match, variable) => {
+          return html.replace(/\{\{([^}]+)\}\}/g, (match) => {
             return `<span class="inline-variable" contenteditable="false">${match}</span>`;
           });
         };

@@ -11,7 +11,6 @@ interface RichTextEditorProps {
 function RichTextEditor({ value, onChange, onInsertVariable, placeholder }: RichTextEditorProps) {
   const editorRef = useRef<HTMLDivElement>(null);
   const [showToolbar, setShowToolbar] = useState(false);
-  const [isLinkMode, setIsLinkMode] = useState(false);
 
   // Initialize editor content
   useEffect(() => {
@@ -43,7 +42,6 @@ function RichTextEditor({ value, onChange, onInsertVariable, placeholder }: Rich
   const handleBlur = () => {
     setTimeout(() => {
       setShowToolbar(false);
-      setIsLinkMode(false);
     }, 200);
   };
 
@@ -59,7 +57,6 @@ function RichTextEditor({ value, onChange, onInsertVariable, placeholder }: Rich
     if (url) {
       execCommand('createLink', url);
     }
-    setIsLinkMode(false);
   };
 
   // Insert variable at cursor

@@ -223,7 +223,7 @@ function PropertiesPanel({ block, blocks, onUpdate }: PropertiesPanelProps) {
               ) : (
                 <>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '12px' }}>
-                    {block.groupOptions.map((option, index) => (
+                    {(block.groupOptions || []).map((option, index) => (
                       <div key={index} style={{
                         padding: '12px',
                         backgroundColor: '#F9FAFB',
