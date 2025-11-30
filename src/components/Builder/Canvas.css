@@ -26,13 +26,19 @@
 
 .canvas-content {
   background-color: var(--color-bg-panel);
-  border: none;
+  border: 2px dashed transparent;
   border-radius: var(--radius-lg);
   min-height: 400px;
   padding: 2rem;
   box-shadow: var(--shadow-lg);
   max-width: 800px;
   margin: 0 auto;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.canvas-content.drag-over {
+  border-color: var(--color-primary);
+  background-color: rgba(59, 130, 246, 0.05);
 }
 
 .canvas-empty {
@@ -49,9 +55,13 @@
   padding: 0.5rem;
   border: 2px solid var(--color-border-light);
   border-radius: var(--radius-sm);
-  cursor: pointer;
+  cursor: grab;
   transition: all 0.2s;
   background-color: var(--color-bg-panel);
+}
+
+.canvas-block:active {
+  cursor: grabbing;
 }
 
 .canvas-block.newly-added {
@@ -98,4 +108,61 @@
   font-weight: bold;
   color: var(--color-accent-hover);
   border: 1px solid var(--color-accent);
+}
+
+.inline-variable {
+  background-color: rgba(59, 130, 246, 0.1);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-weight: 600;
+  color: #3B82F6;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  cursor: default;
+  display: inline-block;
+  margin: 0 2px;
+}
+
+.dynamic-badge {
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.dependency-badge {
+  position: absolute;
+  top: 0.25rem;
+  left: 3rem; /* Position next to dynamic badge */
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }

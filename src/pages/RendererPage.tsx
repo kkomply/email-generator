@@ -7,6 +7,7 @@ import './RendererPage.css';
 
 function RendererPage() {
   const [schema, setSchema] = useState<JSONSchema | null>(null);
+  const [uiSchema, setUiSchema] = useState<Record<string, any> | undefined>(undefined);
   const [template, setTemplate] = useState<string>('');
   const [formData, setFormData] = useState<Record<string, any>>({});
   const [loadingStatus, setLoadingStatus] = useState<string>('');
@@ -47,9 +48,20 @@ function RendererPage() {
       const reader = new FileReader();
       reader.onload = (e) => {
         try {
-          const loadedSchema = JSON.parse(e.target?.result as string);
-          console.log('Schema загружена:', loadedSchema);
-          setSchema(loadedSchema);
+          const loadedData = JSON.parse(e.target?.result as string);
+          console.log('Schema файл загружен:', loadedData);
+
+          // Check if it's the new format with schema and uiSchema
+          if (loadedData.schema) {
+            setSchema(loadedData.schema);
+            setUiSchema(loadedData.uiSchema);
+            console.log('UI Schema загружена:', loadedData.uiSchema);
+          } else {
+            // Old format - just schema
+            setSchema(loadedData);
+            setUiSchema(undefined);
+          }
+
           schemaLoaded = true;
           if (schemaLoaded && templateLoaded) {
             setLoadingStatus('Оба файла успешно загружены!');
@@ -107,6 +119,7 @@ function RendererPage() {
               <h2>Заполните форму</h2>
               <FormRenderer
                 schema={schema}
+                uiSchema={uiSchema}
                 formData={formData}
                 onChange={setFormData}
               />

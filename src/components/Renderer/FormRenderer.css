@@ -45,3 +45,89 @@
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
   background-color: var(--color-bg-panel);
 }
+
+/* Базовые стили для ВСЕХ кнопок */
+.form-renderer button {
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid #3B82F6;
+  background-color: #3B82F6;
+  color: white;
+}
+
+.form-renderer button:hover {
+  background-color: #2563EB;
+}
+
+/* Кнопки по классам RJSF */
+/* Кнопка перемещения вверх */
+.form-renderer button.array-item-move-up {
+  background-color: #6B7280;
+  border-color: #6B7280;
+  padding: 4px 10px;
+  min-width: 40px;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.form-renderer button.array-item-move-up:hover {
+  background-color: #4B5563;
+}
+
+/* Кнопка перемещения вниз */
+.form-renderer button.array-item-move-down {
+  background-color: #6B7280;
+  border-color: #6B7280;
+  padding: 4px 10px;
+  min-width: 40px;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.form-renderer button.array-item-move-down:hover {
+  background-color: #4B5563;
+}
+
+/* Кнопка удаления */
+.form-renderer button.array-item-remove {
+  background-color: #EF4444;
+  border-color: #EF4444;
+  padding: 4px 12px;
+  min-width: 90px;
+}
+
+.form-renderer button.array-item-remove:hover {
+  background-color: #DC2626;
+}
+
+/* Кнопка добавления элемента */
+.form-renderer button.array-item-add {
+  background-color: #3B82F6;
+  border-color: #3B82F6;
+  padding: 8px 16px;
+  margin-top: 8px;
+}
+
+/* Контейнер элемента массива */
+.form-renderer .array-item {
+  background-color: #F9FAFB;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+  border: 1px solid #E5E7EB;
+}
+
+/* Заголовок секции массива */
+.form-renderer fieldset legend {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--color-primary);
+  width: 100%;
+}
